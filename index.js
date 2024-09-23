@@ -11,18 +11,19 @@ import multer from "multer";
 import "dotenv/config";
 
 const app = express();
+app.use(cors());
 
 //middleware
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  // res.header("Access-Control-Allow-Credentials", true);
   next();
 });
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 app.use(cookieParser());
 
 // FILE UPLOAD THROUGH MULTER
