@@ -11,16 +11,23 @@ import multer from "multer";
 import "dotenv/config";
 
 const app = express();
-app.use(cors());
+// List of allowed origins
+const allowedOrigins = [
+  "https://microblog-git-main-san491s-projects.vercel.app/",
+  "https://microblog-cfzlmmhvt-san491s-projects.vercel.app/",
+  "http://localhost:5174/",
+];
+
+// CORS middleware configuration
+const corsConfig = {
+  credentials: true,
+  origin: true,
+};
+app.use(cors(corsConfig));
 
 //middleware
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  // res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Credentials", true);
   next();
 });
 app.use(express.json());
