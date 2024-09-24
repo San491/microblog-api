@@ -12,18 +12,23 @@ import "dotenv/config";
 
 const app = express();
 // List of allowed origins
-const allowedOrigins = [
-  "https://microblog-git-main-san491s-projects.vercel.app/",
-  "https://microblog-cfzlmmhvt-san491s-projects.vercel.app/",
-  "http://localhost:5174/",
-];
+// const allowedOrigins = [
+//   "https://microblog-git-main-san491s-projects.vercel.app/",
+//   "https://microblog-cfzlmmhvt-san491s-projects.vercel.app/",
+//   "http://localhost:5174/",
+// ];
 
-// CORS middleware configuration
-const corsConfig = {
-  credentials: true,
-  origin: true,
-};
-app.use(cors(corsConfig));
+// // CORS middleware configuration
+// const corsConfig = {
+//   credentials: true,
+//   origin: true,
+// };
+// app.use(cors(corsConfig));
+app.use(
+  cors({
+    origin: "https://microblog-git-main-san491s-projects.vercel.app/",
+  })
+);
 
 //middleware
 app.use((req, res, next) => {
@@ -57,5 +62,5 @@ app.use("/api/user", userRoutes);
 app.use("/api/relationships", relationshipsRoutes);
 
 app.listen(8800, () => {
-  console.log("API is working! On port 8800");
+  console.log("API is working!");
 });
