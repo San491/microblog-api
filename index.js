@@ -106,7 +106,6 @@ app.post("/api/upload_profile", upload.single("file"), async (req, res) => {
       fileName: req.file.originalname,
       folder: "/profileImages",
       overwriteFile: true,
-      transformation: [{ quality: 80 }],
     });
 
     res.status(200).json({
