@@ -30,8 +30,8 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    // origin: "https://microblog-tawny.vercel.app",
+    // origin: "http://localhost:5173",
+    origin: "https://microblog-tawny.vercel.app",
     credentials: true,
   })
 );
