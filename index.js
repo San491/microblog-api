@@ -30,8 +30,8 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    // origin: "http://localhost:5173",
-    origin: "https://microblog-tawny.vercel.app",
+    origin: "http://localhost:5173",
+    // origin: "https://microblog-tawny.vercel.app",
     credentials: true,
   })
 );
@@ -81,6 +81,7 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
       file: req.file.buffer,
       fileName: req.file.originalname,
       folder: "/posts",
+      transformation: [{ quality: 80 }],
     });
 
     res.status(200).json({
@@ -105,7 +106,7 @@ app.post("/api/upload_profile", upload.single("file"), async (req, res) => {
       file: req.file.buffer,
       fileName: req.file.originalname,
       folder: "/profileImages",
-      overwriteFile: true,
+      transformation: [{ quality: 80 }],
     });
 
     res.status(200).json({
